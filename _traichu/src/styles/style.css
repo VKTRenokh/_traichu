@@ -1,0 +1,238 @@
+@import "@/styles/reset.css";
+@import "animations.css";
+
+:root {
+    /*
+    Colors - pulled from https://nipponcolors.com
+
+    HSL(a) is used for better control.
+    https://css-tricks.com/hsl-hsla-is-great-for-programmatic-color-control/
+    https://css-tricks.com/color-alpha-anywhere/
+    */
+    --color-black-hsl: 0 0% 11%; /* .1C1C1C */
+    --color-black: hsl(var(--color-black-hsl));
+    --color-orange-hsl: 19 88% 53%; /* .F05E1C */
+    --color-orange: hsl(var(--color-orange-hsl));
+    --color-white-hsl: 60 100% 99%; /* .FFFFFC */
+    --color-white: hsl(var(--color-white-hsl));
+
+    /* Font-families */
+    --font-monospace: "Fira Code", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+    /* Font-sizing */
+    --font-size-body: 1rem; /* 16px */
+
+    /* Spacing */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-s: 0.5rem; /* 8px */
+    --spacing-m: 1rem;
+    --spacing-l: 2rem; /* 32px */
+    --spacing-xl: 4rem; /* 64px */
+
+    /* SVGs */
+    --svg-search-gray: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzUyNTI1MiIgZD0iTTMyLDI5LjU4bC05LjQ3LTkuNDdjMS42LTIuMTEsMi41Ni00LjcyLDIuNTYtNy41NkMyNS4wOSw1LjYzLDE5LjQ2LDAsMTIuNTQsMFMwLDUuNjMsMCwxMi41NHM1LjYzLDEyLjU0LDEyLjU0LDEyLjU0YzIuODQsMCw1LjQ2LS45Niw3LjU2LTIuNTZsOS40Nyw5LjQ3LDIuNDItMi40MlpNMy40MiwxMi41NEMzLjQyLDcuNTEsNy41MSwzLjQyLDEyLjU0LDMuNDJzOS4xMiw0LjA4LDkuMTIsOS4xMi00LjA4LDkuMTItOS4xMiw5LjEyUzMuNDIsMTcuNTgsMy40MiwxMi41NFoiLz48L3N2Zz4=');
+    --svg-search-light-gray: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzg3ODc4NyIgZD0iTTMyLDI5LjU4bC05LjQ3LTkuNDdjMS42LTIuMTEsMi41Ni00LjcyLDIuNTYtNy41NkMyNS4wOSw1LjYzLDE5LjQ2LDAsMTIuNTQsMFMwLDUuNjMsMCwxMi41NHM1LjYzLDEyLjU0LDEyLjU0LDEyLjU0YzIuODQsMCw1LjQ2LS45Niw3LjU2LTIuNTZsOS40Nyw5LjQ3LDIuNDItMi40MlpNMy40MiwxMi41NEMzLjQyLDcuNTEsNy41MSwzLjQyLDEyLjU0LDMuNDJzOS4xMiw0LjA4LDkuMTIsOS4xMi00LjA4LDkuMTItOS4xMiw5LjEyUzMuNDIsMTcuNTgsMy40MiwxMi41NFoiLz48L3N2Zz4=');
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-background-color: var(--color-black);
+        --primary-font-color: var(--color-white);
+        --primary-link-color: hsl(var(--color-white-hsl) / 0.5);
+        --primary-link-hover-color: var(--color-white);
+    }
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-background-color: hsl(var(--color-black-hsl) / 0.075);
+        --primary-font-color: hsl(var(--color-black-hsl) / 0.75);
+        --primary-link-color: hsl(var(--color-black-hsl) / 0.75);
+        --primary-link-hover-color: var(--color-black);
+    }
+}
+
+body {
+    background-color: var(--primary-background-color);
+    color: var(--primary-font-color);
+    font-family: "JetBrains Mono";
+    font-size: var(--font-size-body);
+    overflow: hidden;
+}
+
+.date,
+.location {
+    color: var(--primary-link-hover-color);
+    filter: brightness(75%);
+    font-weight: 700;
+}
+
+.time,
+.details {
+    color: var(--primary-link-color);
+    text-transform: capitalize;
+}
+
+.details {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.separator {
+    margin: 0 var(--spacing-xs);
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.search form {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.search input {
+    background-color: transparent;
+    background-position: right 1.25rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5rem 1.5rem;
+    border-radius: 0.5rem;
+    color: var(--primary-link-color);
+    /*font-family: var(--font-sans-serif);*/
+    line-height: 1.5;
+    outline: 0.25rem solid transparent;
+    padding: var(--spacing-m);
+    width: 100%;
+    transition: border-color .5s ease-in-out, background-color .3s cubic-bezier(.94,.05,.33,.69);
+    font-family: "JetBrains Mono";
+}
+
+@media (prefers-color-scheme: dark) {
+    .search input {
+        background-image: var(--svg-search-gray);
+        border: 0.125rem solid hsl(var(--color-white-hsl) / 0.25);
+    }
+
+    .search input:hover {
+        border-color: hsl(var(--color-white-hsl) / 0.5);
+    }
+
+    .bookmarks a:focus,
+    .bookmarks a:hover {
+        background-color: hsl(var(--color-white-hsl) / 0.05);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .weather img {
+        filter: drop-shadow(0 0 0 hsl(var(--color-black-hsl) / 0.75));
+    }
+
+    .search input {
+        background-image: var(--svg-search-light-gray);
+        border: 0.125rem solid hsl(var(--color-black-hsl) / 0.25);
+    }
+
+    .search input:hover {
+        border-color: hsl(var(--color-black-hsl) / 0.5);
+    }
+
+    .bookmarks a:focus,
+    .bookmarks a:hover {
+        background-color: hsl(var(--color-black-hsl) / 0.05);
+    }
+}
+
+.search input:focus {
+    background-color: hsl(var(--color-white-hsl) / 0.025);
+    border-color: var(--color-orange);
+    /*outline-color: hsl(var(--color-orange-hsl) / 0.25);*/
+}
+
+.bookmarks {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bookmarks ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bookmarks li {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+.favicon {
+    margin-right: var(--spacing-s);
+    height: 1rem;
+}
+
+.bookmarks a {
+    align-items: center;
+    border-radius: 0.25rem;
+    display: flex;
+    color: var(--primary-link-color);
+    padding: var(--spacing-s);
+    text-decoration: none;
+}
+
+.bookmarks a:focus,
+.bookmarks a:hover {
+    color: var(--primary-link-hover-color);
+    outline: none;
+}
+
+/*
+    Accessible hiding for screen readers
+    https://webaim.org/techniques/css/invisiblecontent/.techniques
+*/
+.sr-only {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
+/* Responsive Media Queries */
+@media screen and (min-width: 48em) {
+    header {
+        display: flex;
+    }
+
+    .traichu {
+        padding: 0;
+        width: 45rem; /* 720px */
+    }
+
+    aside img,
+    aside svg {
+        height: 7.5rem;
+    }
+
+    .bookmarks {
+        flex-direction: row;
+    }
+}
+
+*::selection {
+  background: var(--color-orange);
+}
