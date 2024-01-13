@@ -1,4 +1,3 @@
-
 interface Coord {
   lon: number;
   lat: number;
@@ -37,7 +36,7 @@ interface Sys {
   sunset: number;
 }
 
-export interface IWeather {
+export interface WeatherResponse {
   coord: Coord;
   weather: Weather[];
   base: string;

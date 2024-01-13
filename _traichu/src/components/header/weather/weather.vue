@@ -1,8 +1,8 @@
 <script lang="ts">
-import {defineComponent} from "vue";
-import type {IWeather} from "@/interfaces/IWeather";
+import { defineComponent } from "vue";
+import type { WeatherResponse } from "@/interfaces/IWeather";
 
-interface IComponentsStates {
+interface ComponentsStates {
   loading: boolean;
   description: string | null;
   tempK: number | null;
@@ -12,7 +12,7 @@ interface IComponentsStates {
 }
 
 export default defineComponent({
-  data(): IComponentsStates {
+  data(): ComponentsStates {
     return {
       loading: true,
       description: null,

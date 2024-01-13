@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.0.18",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

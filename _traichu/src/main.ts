@@ -1,8 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import {createApp} from 'vue';
+import App from './App.vue';
+import '@fontsource/jetbrains-mono';
 
-import "./styles/style.css"
+import './styles/style.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.mount('#app')
+app.mount('#app');
