@@ -3,7 +3,7 @@ interface Coord {
   lat: number;
 }
 
-interface Weather {
+export interface Weather {
   id: number;
   main: string;
   description: string;
@@ -38,7 +38,7 @@ interface Sys {
 
 export interface WeatherResponse {
   coord: Coord;
-  weather: Weather[];
+  weather: [Weather, ...Weather[]];
   base: string;
   main: Main;
   visibility: number;

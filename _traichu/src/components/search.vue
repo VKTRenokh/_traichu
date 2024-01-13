@@ -2,7 +2,7 @@
   <section class="search">
     <form action="https://duckduckgo.com/" method="get" class="search-form">
       <label for="search-input" class="search-input-label">Search</label>
-      <input type="text" id="search-input" autofocus>
+      <input type="text" id="search-input" name="q" autofocus>
       <button class="sr-only" tabindex="-1">Search</button>
     </form>
   </section>

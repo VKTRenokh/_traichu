@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Weather from "@/components/header/weather/weather.vue";
+import Weather from "./weather/weather.vue";
 import Clock from "@/components/header/time/Clock.vue";
 </script>
 
@@ -9,7 +9,7 @@ import Clock from "@/components/header/time/Clock.vue";
       <Clock />
     </section>
     <section class="weather">
-      <Weather api-key="51310ba1835a914983b3139c03f6733f" city="paphos" />
+      <Weather api-key="51310ba1835a914983b3139c03f6733f" city="Paphos" />
     </section>
   </header>
 </template>
