@@ -7,18 +7,17 @@
 
 <script setup lang="ts">
 import Header from "@/components/header/header.vue";
-import Traichu from "@/components/traichu/Traichu.vue";
+import Traichu from "@/components/traichu/traichu.vue";
 </script>
 
 <template>
   <main>
-    <Header/>
-    <Traichu/>
+    <Header />
+    <Traichu />
   </main>
 </template>
 
 <style>
-
 main {
   align-items: center;
   display: flex;
@@ -26,5 +25,4 @@ main {
   justify-content: center;
   min-height: 100vh;
 }
-
 </style>
