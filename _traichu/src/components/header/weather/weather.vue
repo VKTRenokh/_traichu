@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, onMounted } from "vue"
+import { ref, onMounted } from "vue"
 import { baseUrl } from "@/utils/base-url"
 import type { Props } from "./types/props"
 import type { WeatherResponse, Weather } from "@/types/weather"
