@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue"
+import { ref, reactive, onMounted, onUnmounted } from "vue"
 import { links } from "./links"
 import { isOpenedKey } from "./constants/local-storage"
 
-const isOpened = ref(!!localStorage.getItem(isOpenedKey))
+const string = localStorage.getItem(isOpenedKey)
+
+const isOpened = reactive<{ is: boolean }>(string ? JSON.parse(string) : { is: false })
 
 const setIsOpened = () => {
-  isOpened.value = !isOpened.value
+  console.log(isOpened.is)
 
-  localStorage.setItem(isOpenedKey, isOpened.value.toString())
+  isOpened.is = !isOpened.is
+
+  localStorage.setItem(isOpenedKey, JSON.stringify(isOpened))
 }
 
 const keys = new Map<string, () => void>([
   ['d', () => {
     setIsOpened()
   }],
+  ["D", () => window.location.assign('https://discord.com/app')],
   ["g", () => window.location.assign('https://github.com')]
 ])
 
@@ -35,15 +40,17 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 
 <template>
   <Transition>
-    <nav class="dock" v-if="isOpened">
-      <ul>
-        <li v-for="link in links">
-          <a :href="link.href">
-            <img :src="link.icon" alt="">
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <template v-if="isOpened.is">
+      <nav class="dock" v-if="isOpened">
+        <ul>
+          <li v-for="link in links">
+            <a :href="link.href">
+              <img :src="link.icon" alt="">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </template>
   </Transition>
 </template>
 

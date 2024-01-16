@@ -17,8 +17,6 @@ const handleKeyDown = (event: KeyboardEvent) => {
 }
 
 const handleInputKeyDown = (event: KeyboardEvent) => {
-  console.log(event.key)
-
   if (event.key !== 'Escape') {
     return
   }
@@ -40,7 +38,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
     <form action="https://duckduckgo.com/" method="get" class="search-form">
       <label for="search-input" class="search-input-label">Search</label>
       <input ref="search" type="text" id="search-input" name="q" autofocus @keydown="handleInputKeyDown">
-      <button class="sr-only" tabindex="-1">Search</button>
+      <button class="sr-only" tabindex="-1"></button>
     </form>
   </section>
 </template>
