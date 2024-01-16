@@ -3,6 +3,6 @@
 import {Component, ComputedOptions, MethodOptions} from 'vue';
 
 declare module '*.vue' {
-  const content: Component<any, any, any, ComputedOptions, MethodOptions>;
+  const content: Component;
   export default content;
 }

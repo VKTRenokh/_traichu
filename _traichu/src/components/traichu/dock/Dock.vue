@@ -72,13 +72,11 @@ export default defineComponent({
   fill: hsl(14, 89%, 53%);
 }
 
-.dock svg {
+.dock img {
   height: 1.5rem;
 }
 
 @media screen and (min-width: 48em) {
-
-
   .dock ul {
     column-gap: 0;
     justify-content: space-around !important;

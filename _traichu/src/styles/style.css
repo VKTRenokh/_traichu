@@ -12,10 +12,12 @@
   --color-black-hsl: 0 0% 11%;
   /* .1C1C1C */
   --color-black: hsl(var(--color-black-hsl));
+  --color-black-filter: hue-rotate(0) saturate(0%) brightness(11%);
   --color-orange-hsl: 19 88% 53%;
   /* .F05E1C */
   --color-orange: hsl(var(--color-orange-hsl));
   --color-white-hsl: 60 100% 99%;
+  --color-white-filter: hue-rotate(60) saturate(100%) brightness(99%);
   /* .FFFFFC */
   --color-white: hsl(var(--color-white-hsl));
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Search from "@/components/search/search.vue";
-import Dock from "@/components/traichu/dock/Dock.vue";
+import Dock from "@/components/traichu/dock/dock-a.vue";
 </script>
 
 <template>
