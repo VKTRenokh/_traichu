@@ -8,7 +8,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
     return
   }
 
-  if (!search.value) {
+  if (!search.value || document.activeElement === search.value) {
     return
   }
 
