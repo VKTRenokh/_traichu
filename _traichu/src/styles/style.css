@@ -51,6 +51,7 @@
     --primary-background-color: var(--color-black);
     --primary-font-color: var(--color-white);
     --primary-link-color: hsl(var(--color-white-hsl) / 0.5);
+    --primary-link-color-filter: var(--color-white-filter);
     --primary-link-hover-color: var(--color-white);
   }
 }
@@ -61,6 +62,7 @@
     --primary-background-color: hsl(var(--color-black-hsl) / 0.075);
     --primary-font-color: hsl(var(--color-black-hsl) / 0.75);
     --primary-link-color: hsl(var(--color-black-hsl) / 0.75);
+    --primary-link-color-filter: var(--color-black-filter);
     --primary-link-hover-color: var(--color-black);
   }
 }

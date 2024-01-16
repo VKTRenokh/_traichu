@@ -5,15 +5,24 @@ import { isOpenedKey } from "./constants/local-storage"
 
 const isOpened = ref(!!localStorage.getItem(isOpenedKey))
 
+const setIsOpened = () => {
+  isOpened.value = !isOpened.value
+
+  localStorage.setItem(isOpenedKey, isOpened.value.toString())
+}
+
 const keys = new Map<string, () => void>([
   ['d', () => {
-    isOpened.value = !isOpened.value
+    setIsOpened()
   }],
   ["g", () => window.location.assign('https://github.com')]
 ])
 
 const listener = (event: KeyboardEvent) => {
-  if (event.target instanceof HTMLInputElement) { return }
+  if (event.target instanceof HTMLInputElement) {
+    return
+  }
+
   const action = keys.get(event.key)
 
   action?.()
@@ -51,8 +60,12 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 
 .dock a {
   display: block;
-  fill: var(--primary-link-color);
+  /* fill: var(--primary-link-color); */
   transition: fill 0.125s ease-in-out;
+}
+
+.dock img {
+  filter: var(--primary-link-color-filter)
 }
 
 .dock a:focus,
