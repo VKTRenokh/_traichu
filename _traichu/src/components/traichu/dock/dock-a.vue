@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, onMounted, onUnmounted } from "vue"
-import { links, github, gitlab, calendar, googleMail, tuta, discord } from "./links"
+import { links } from "./links"
 import { createRederict } from "@/utils/create-rederict"
 import { isOpenedKey } from "./constants/local-storage"
 
@@ -18,11 +18,7 @@ const setIsOpened = () => {
 
 const keys = new Map<string, () => void>([
   ['d', () => setIsOpened()],
-  createRederict("D", discord),
-  createRederict("g", github),
-  createRederict("G", "https://gitlab.com"),
-  createRederict("m", googleMail),
-  createRederict("M", tuta)
+  ...links.map((link) => createRederict(link.bind, link.href))
 ])
 
 const listener = (event: KeyboardEvent) => {
@@ -48,7 +44,7 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
       <nav class="dock" v-if="isOpened">
         <ul>
           <li v-for="link in links">
-            <a :href="link.href">
+            <a :href="link.href" v-if="link.icon">
               <img :src="link.icon" alt="">
             </a>
           </li>
