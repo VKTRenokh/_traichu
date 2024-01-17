@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, onMounted, onUnmounted } from "vue"
-import { links, github, discord } from "./links"
+import { links, github, gitlab, calendar, googleMail, tuta, discord } from "./links"
 import { createRederict } from "@/utils/create-rederict"
 import { isOpenedKey } from "./constants/local-storage"
 
@@ -20,7 +20,9 @@ const keys = new Map<string, () => void>([
   ['d', () => setIsOpened()],
   createRederict("D", discord),
   createRederict("g", github),
-  createRederict("G", "https://gitlab.com")
+  createRederict("G", "https://gitlab.com"),
+  createRederict("m", googleMail),
+  createRederict("M", tuta)
 ])
 
 const listener = (event: KeyboardEvent) => {

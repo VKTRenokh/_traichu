@@ -53,8 +53,4 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 .search-input-label {
   display: none;
 }
-
-#search-input {
-  caret-shape: block;
-}
 </style>
