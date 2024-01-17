@@ -9,8 +9,6 @@ const string = localStorage.getItem(isOpenedKey)
 const isOpened = reactive<{ is: boolean }>(string ? JSON.parse(string) : { is: false })
 
 const setIsOpened = () => {
-  console.log(isOpened.is)
-
   isOpened.is = !isOpened.is
 
   localStorage.setItem(isOpenedKey, JSON.stringify(isOpened))
@@ -27,8 +25,6 @@ const listener = (event: KeyboardEvent) => {
   }
 
   const action = keys.get(event.key)
-
-  console.log(action)
 
   action?.()
 }
