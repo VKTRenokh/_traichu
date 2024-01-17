@@ -3,7 +3,7 @@ import Search from "@/components/search/search.vue";
 import { defineAsyncComponent } from "vue";
 import Icon from "./icon.vue"
 
-const Dock = defineAsyncComponent(() => import("@/components/traichu/dock/dock-a.vue"))
+const Dock = defineAsyncComponent(() => import("@/components/traichu/dock/dock.vue"))
 </script>
 
 <template>
