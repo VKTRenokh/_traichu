@@ -1,13 +1,20 @@
-import mail from './svg/mail.svg';
-import calendar from './svg/calendar.svg';
-import notion from './svg/notion.svg';
-import github from './svg/github.svg';
-import keep from './svg/keep.svg';
+import mailIcon from './svg/mail.svg';
+import calendarIcon from './svg/calendar.svg';
+import notionIcon from './svg/notion.svg';
+import githubIcon from './svg/github.svg';
+import keepIcon from './svg/keep.svg';
+
+export const github = 'https://github.com';
+export const notion = 'https://notion.so';
+export const googleKeep = 'https://keep.google.com';
+export const calendar = 'https://calendar.google.com';
+export const mail = 'https://mail.google.com';
+export const discord = 'https://discord.com/app';
 
 export const links = [
-  {href: 'https://mail.google.com', icon: mail},
-  {href: 'https://calendar.google.com', icon: calendar},
-  {href: 'https://keep.google.com', icon: keep},
-  {href: 'https://notion.so', icon: notion},
-  {href: 'https://github.com', icon: github},
+  {href: mail, icon: mailIcon},
+  {href: calendar, icon: calendarIcon},
+  {href: googleKeep, icon: keepIcon},
+  {href: notion, icon: notionIcon},
+  {href: github, icon: githubIcon},
 ];

@@ -35,7 +35,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 
 <template>
   <section class="search">
-    <form action="https://duckduckgo.com/" method="get" class="search-form">
+    <form action="https://duckduckgo.com/" method="get" class="search-form" autocomplete="off">
       <label for="search-input" class="search-input-label">Search</label>
       <input ref="search" type="text" id="search-input" name="q" autofocus @keydown="handleInputKeyDown">
       <button class="sr-only" tabindex="-1"></button>
@@ -52,5 +52,9 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 
 .search-input-label {
   display: none;
+}
+
+#search-input {
+  caret-shape: block;
 }
 </style>

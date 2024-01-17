@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted, onUnmounted } from "vue"
-import { links } from "./links"
+import { reactive, onMounted, onUnmounted } from "vue"
+import { links, github, discord } from "./links"
+import { createRederict } from "@/utils/create-rederict"
 import { isOpenedKey } from "./constants/local-storage"
 
 const string = localStorage.getItem(isOpenedKey)
@@ -16,11 +17,10 @@ const setIsOpened = () => {
 }
 
 const keys = new Map<string, () => void>([
-  ['d', () => {
-    setIsOpened()
-  }],
-  ["D", () => window.location.assign('https://discord.com/app')],
-  ["g", () => window.location.assign('https://github.com')]
+  ['d', () => setIsOpened()],
+  createRederict("D", discord),
+  createRederict("g", github),
+  createRederict("G", "https://gitlab.com")
 ])
 
 const listener = (event: KeyboardEvent) => {
@@ -29,6 +29,8 @@ const listener = (event: KeyboardEvent) => {
   }
 
   const action = keys.get(event.key)
+
+  console.log(action)
 
   action?.()
 }
@@ -72,7 +74,8 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 }
 
 .dock img {
-  filter: var(--primary-link-color-filter)
+  filter: hue-rotate(102deg) saturate(53%) brightness(52%);
+  border: magenta 1px solid;
 }
 
 .dock a:focus,
@@ -85,6 +88,7 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 .dock li:nth-child(1) a:focus,
 .dock li:nth-child(1) a:hover {
   fill: hsl(5, 81%, 56%);
+  border: red 1px solid;
 }
 
 /* Gmail */
@@ -129,8 +133,6 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 }
 
 @media screen and (min-width: 48em) {
-
-
   .dock ul {
     column-gap: 0;
     justify-content: space-around !important;
