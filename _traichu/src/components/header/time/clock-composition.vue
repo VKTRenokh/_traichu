@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+
+let frame = 0
 
 const time = ref(new Date().toLocaleTimeString())
 const date = ref(new Date().toDateString())
@@ -9,15 +11,23 @@ const tick = () => {
   date.value = new Date().toDateString()
 }
 
+const clock = () => {
+  tick()
+  frame = requestAnimationFrame(clock)
+}
+
 onMounted(() => {
+  frame = requestAnimationFrame(() => {
+    clock()
+  })
+
   tick()
 })
+
+onUnmounted(() => cancelAnimationFrame(frame))
 </script>
 
 <template>
-  <section class="date-time">
-    <p class="date">{{ date }}</p>
-    <p class="time">{{ time }}</p>
-
-  </section>
+  <p class="date">{{ date }}</p>
+  <p class="time">{{ time }}</p>
 </template>
