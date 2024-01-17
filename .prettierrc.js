@@ -6,7 +6,7 @@ module.exports = {
   printWidth: 120,
   arrowParens: 'always',
   endOfLine: 'auto',
-  bracketSpacing: false,
+  bracketSpacing: true,
   embeddedLanguageFormatting: 'auto',
   htmlWhitespaceSensitivity: 'css',
   insertPragma: false,

@@ -43,11 +43,13 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
     <template v-if="isOpened.is">
       <nav class="dock" v-if="isOpened">
         <ul>
-          <li v-for="link in links">
-            <a :href="link.href" v-if="link.icon">
-              <img :src="link.icon" alt="">
-            </a>
-          </li>
+          <template v-for="link in links">
+            <li v-if="link.icon">
+              <a :href="link.href" v-if="link.icon">
+                <img :src="link.icon" alt="">
+              </a>
+            </li>
+          </template>
         </ul>
       </nav>
     </template>
