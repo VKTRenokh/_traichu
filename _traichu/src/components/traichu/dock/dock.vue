@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import { reactive, onMounted, onUnmounted, inject } from "vue"
+import { onMounted, onUnmounted, inject } from "vue"
 import { links } from "./links"
 import { createRederict } from "@/utils/create-rederict"
-import { isOpenedKey } from "./constants/local-storage"
-import { modeToken, type Mode } from "@/mode"
+import { modeToken, modeKey, type Mode } from "@/mode"
 import { parseKey } from "./utils/parse-key"
-
-const string = localStorage.getItem(isOpenedKey)
 
 const mode = inject<Mode>(modeToken)
 
-const isOpened = reactive<{ is: boolean }>(string ? JSON.parse(string) : { is: false })
+const updateStorage = () => {
+  localStorage.setItem(modeKey, JSON.stringify(mode))
+}
 
 const setIsOpened = () => {
-  isOpened.is = !isOpened.is
+  mode.dockClosed = !mode.dockClosed
 
-  localStorage.setItem(isOpenedKey, JSON.stringify(isOpened))
+  updateStorage()
 }
 
 const setIsMinimal = () => {
   mode.minimal = !mode.minimal
+
+  updateStorage()
 }
 
 const keys = new Map<string, () => void>([
@@ -32,7 +33,6 @@ const listener = (event: KeyboardEvent) => {
   if (event.target instanceof HTMLInputElement) {
     return
   }
-
 
   const action = keys.get(parseKey(event))
 
@@ -49,8 +49,8 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 
 <template>
   <Transition>
-    <template v-if="isOpened.is">
-      <nav class="dock" v-if="isOpened && !mode.minimal">
+    <template v-if="mode.dockClosed">
+      <nav class="dock" v-if="mode.dockClosed && !mode.minimal">
         <ul>
           <template v-for="link in links">
             <li v-if="link.icon">

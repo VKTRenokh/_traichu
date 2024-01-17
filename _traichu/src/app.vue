@@ -7,12 +7,14 @@
 
 <script setup lang="ts">
 import { reactive, provide } from "vue";
-import { modeToken, type Mode } from "./mode"
+import { modeToken, modeKey, type Mode } from "./mode"
 
 import Traichu from "@/components/traichu/traichu.vue";
 import Header from "@/components/header/header.vue"
 
-const mode = reactive<Mode>({ minimal: true })
+const modeStorage = localStorage.getItem(modeKey)
+
+const mode = reactive<Mode>(modeStorage ? JSON.parse(modeStorage) : { minimal: false, dockClosed: false })
 
 provide(modeToken, mode)
 </script>
