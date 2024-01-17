@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Weather from "./weather/weather.vue";
-import Clock from "./time/clock-composition.vue"
+import Clock from "./time/clock.vue"
 </script>
 
 <template>

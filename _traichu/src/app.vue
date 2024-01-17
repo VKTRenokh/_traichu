@@ -6,13 +6,20 @@
 -->
 
 <script setup lang="ts">
-import Header from "@/components/header/header.vue";
+import { reactive, provide } from "vue";
+import { modeToken, type Mode } from "./mode"
+
 import Traichu from "@/components/traichu/traichu.vue";
+import Header from "@/components/header/header.vue"
+
+const mode = reactive<Mode>({ minimal: true })
+
+provide(modeToken, mode)
 </script>
 
 <template>
   <main>
-    <Header />
+    <Header v-if="!mode.minimal" />
     <Traichu />
   </main>
 </template>
