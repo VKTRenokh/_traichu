@@ -34,6 +34,9 @@ const listener = (event: KeyboardEvent) => {
     return
   }
 
+
+  event.preventDefault()
+
   const action = keys.get(parseKey(event))
 
   if (action) {
