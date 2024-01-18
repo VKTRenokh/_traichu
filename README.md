@@ -5,7 +5,9 @@
 - Has keybindings
 
 # Screenshots
-![page Screenshots]()
+![page Screenshots](./assets/screenshot-1.png)
+![page Screenshots](./assets/screenshot-2.png)
+![page Screenshots](./assets/screenshot-3.png)
 
 # Keybindings
 | Key | action |
@@ -20,3 +22,5 @@
 | c | redericts to [Google Calendar](https://calendar.google.com) |
 | n | redericts to [Notion](https://notion.so) |
 | k | redericts to [Google Keep](https://keep.google.com) |
+| i | focus on search input |
+| `<Esc>` | unfocus search input |

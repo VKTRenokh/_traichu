@@ -87,7 +87,6 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 
 .dock img {
   filter: hue-rotate(102deg) saturate(53%) brightness(52%);
-  border: magenta 1px solid;
 }
 
 .dock a:focus,
