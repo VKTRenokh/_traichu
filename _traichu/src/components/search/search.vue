@@ -38,7 +38,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
     <form action="https://duckduckgo.com/" method="get" class="search-form" autocomplete="off">
       <label for="search-input" class="search-input-label">Search</label>
       <input ref="search" type="text" id="search-input" name="q" autofocus @keydown="handleInputKeyDown">
-      <button class="sr-only" tabindex="-1"></button>
+      <button class="sr-only" tabindex="-1" aria-label="search"></button>
     </form>
   </section>
 </template>

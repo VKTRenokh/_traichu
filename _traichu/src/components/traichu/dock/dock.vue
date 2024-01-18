@@ -2,10 +2,10 @@
 import { onMounted, onUnmounted, inject } from "vue"
 import { links } from "./links"
 import { createRederict } from "@/utils/create-rederict"
-import { modeToken, modeKey, type Mode } from "@/mode"
+import { modeToken, modeKey, initial, type Mode } from "@/mode"
 import { parseKey } from "./utils/parse-key"
 
-const mode = inject<Mode>(modeToken)
+const mode = inject<Mode>(modeToken, initial)
 
 const updateStorage = () => {
   localStorage.setItem(modeKey, JSON.stringify(mode))

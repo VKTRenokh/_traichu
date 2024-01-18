@@ -1,40 +1,22 @@
-# _triachu
+# Traichu
+- Uses duck duck go search engine
+- `98` Performance on [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-traichu-netlify-app/8nyntpnjmj?form_factor=desktop)
+- Made on [vue](https://vuejs.org)
+- Has keybindings
 
-This template should help get you started developing with Vue 3 in Vite.
+# Screenshots
+![page Screenshots]()
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+# Keybindings
+| Key | action |
+|---|---|
+| g | redericts to [Github](https://github.com) |
+| G | redericts to [Gitlab](https://gitlab.com) |
+| d | closes dock with icons |
+| `<C-d>` | Minimalist Mode |
+| D | redericts to [Discord](https://discord.com/app) |
+| m | redericts to [Google Mail](https://mail.google.com/) |
+| M | redericts to [Tuta Mail](https://tuta.io/) |
+| c | redericts to [Google Calendar](https://calendar.google.com) |
+| n | redericts to [Notion](https://notion.so) |
+| k | redericts to [Google Keep](https://keep.google.com) |
