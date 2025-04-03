@@ -4,15 +4,9 @@ import { onMounted, onUnmounted, ref } from 'vue'
 const search = ref<HTMLInputElement>()
 
 const handleKeyDown = (event: KeyboardEvent) => {
-  if (event.target instanceof HTMLElement) {
-    return
-  }
-
   if (event.key !== 'i') {
     return
   }
-
-  event.preventDefault()
 
   if (!search.value || document.activeElement === search.value) {
     return
