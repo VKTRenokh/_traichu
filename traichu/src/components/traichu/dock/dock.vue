@@ -1,53 +1,49 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, inject } from "vue"
-import { links } from "./links"
-import { createRederict } from "@/utils/create-rederict"
-import { modeToken, modeKey, initial, type Mode } from "@/mode"
-import { parseKey } from "./utils/parse-key"
+import { onMounted, onUnmounted, inject } from 'vue';
+import { links } from './links';
+import { createRederict } from '@/utils/create-rederict';
+import { modeToken, modeKey, initial, type Mode } from '@/mode';
+import { parseKey } from './utils/parse-key';
 
-const mode = inject<Mode>(modeToken, initial)
+const mode = inject<Mode>(modeToken, initial);
 
 const updateStorage = () => {
-  localStorage.setItem(modeKey, JSON.stringify(mode))
-}
+  localStorage.setItem(modeKey, JSON.stringify(mode));
+};
 
 const setIsOpened = () => {
-  mode.dockClosed = !mode.dockClosed
+  mode.dockClosed = !mode.dockClosed;
 
-  updateStorage()
-}
+  updateStorage();
+};
 
 const setIsMinimal = () => {
-  mode.minimal = !mode.minimal
+  mode.minimal = !mode.minimal;
 
-  updateStorage()
-}
+  updateStorage();
+};
 
 const keys = new Map<string, () => void>([
   ['d', () => setIsOpened()],
   ['<C-d>', setIsMinimal],
-  ...links.map((link) => createRederict(link.bind, link.href))
-])
+  ...links.map((link) => createRederict(link.bind, link.href)),
+]);
 
 const listener = (event: KeyboardEvent) => {
-  if (event.target instanceof HTMLInputElement) {
-    return
+  event.preventDefault();
+
+  const action = keys.get(parseKey(event));
+
+  if (!action) {
+    return;
   }
 
+  action();
+};
 
-  event.preventDefault()
+onMounted(() => window.addEventListener('keydown', listener));
 
-  const action = keys.get(parseKey(event))
-
-  if (action) {
-    event.preventDefault()
-    action()
-  }
-}
-
-onMounted(() => window.addEventListener("keydown", listener))
-
-onUnmounted(() => window.removeEventListener("keydown", listener))
+onUnmounted(() => window.removeEventListener('keydown', listener));
 </script>
 
 <template>
@@ -58,7 +54,7 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
           <template v-for="link in links">
             <li v-if="link.icon">
               <a :href="link.href" v-if="link.icon">
-                <img :src="link.icon" alt="">
+                <img :src="link.icon" alt="" />
               </a>
             </li>
           </template>
@@ -91,7 +87,7 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 
 .dock a:focus,
 .dock a:hover {
-  animation: slime 0.75s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: slime 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   fill: var(--primary-link-hover-color);
   outline: none;
 }
@@ -119,14 +115,14 @@ onUnmounted(() => window.removeEventListener("keydown", listener))
 .dock li:nth-child(4) a:hover {
   /*fill: var(--primary-link-hover-color);*/
   fill: hsl(102, 53%, 52%);
-  filter: hue-rotate(102deg) saturate(53%) brightness(52%)
+  filter: hue-rotate(102deg) saturate(53%) brightness(52%);
 }
 
 /* github */
 .dock li:nth-child(5) a:focus,
 .dock li:nth-child(5) a:hover {
   fill: hsl(14, 89%, 53%);
-  filter: hue-rotate(12) saturate(89%) brightness(53%)
+  filter: hue-rotate(12) saturate(89%) brightness(53%);
 }
 
 .dock img {
