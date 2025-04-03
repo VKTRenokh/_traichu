@@ -1,20 +1,52 @@
 <script setup lang="ts">
-import Search from "@/components/search/search.vue";
-import { defineAsyncComponent } from "vue";
-import Icon from "./icon.vue"
+import Search from '@/components/search/search.vue'
+import { defineAsyncComponent, inject, onMounted, onUnmounted } from 'vue'
+import Icon from './icon.vue'
+import { parseKey } from './dock/utils/parse-key'
+import { createRederict } from '@/utils/create-rederict'
+import { links } from './dock/links'
+import { initial, modeKey, modeToken, type Mode } from '@/mode'
 
-const Dock = defineAsyncComponent(() => import("@/components/traichu/dock/dock.vue"))
+const mode = inject<Mode>(modeToken, initial)
+
+const updateStorage = () => localStorage.setItem(modeKey, JSON.stringify(mode))
+
+const minimalMode = () => {
+  mode.minimal = !mode.minimal
+
+  updateStorage()
+}
+
+const keys = new Map<string, () => void>([
+  ['<C-d>', minimalMode],
+  ...links.map((link) => createRederict(link.bind, link.href)),
+])
+
+const listener = (event: KeyboardEvent) => {
+  event.preventDefault()
+
+  const action = keys.get(parseKey(event))
+
+  if (!action) {
+    return
+  }
+
+  action()
+}
+
+onMounted(() => window.addEventListener('keydown', listener))
+
+onUnmounted(() => window.removeEventListener('keydown', listener))
 </script>
 
 <template>
   <section class="traichu">
     <Icon />
-    <Dock />
     <Search />
   </section>
 </template>
 
-<style >
+<style>
 aside {
   display: flex;
   justify-content: space-around;
