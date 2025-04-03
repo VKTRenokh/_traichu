@@ -14,5 +14,7 @@ export const links: Link[] = [
   { href: 'https://gitlab.com', bind: 'G' },
   { href: 'https://discord.com/app', bind: 'D' },
   { href: 'https://tuta.io', bind: 'M' },
-  { href: 'https://chess.com', bind: 'C' },
+  { href: 'https://chatgpt.com', bind: '<C-g>' },
+  { href: 'https://claude.ai/new', bind: '<C-C>' },
+  { href: 'https://miro.com/', bind: '<C-m>' },
 ]

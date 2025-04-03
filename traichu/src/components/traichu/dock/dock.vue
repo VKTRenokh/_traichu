@@ -1,49 +1,49 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, inject } from 'vue';
-import { links } from './links';
-import { createRederict } from '@/utils/create-rederict';
-import { modeToken, modeKey, initial, type Mode } from '@/mode';
-import { parseKey } from './utils/parse-key';
+import { onMounted, onUnmounted, inject } from 'vue'
+import { links } from './links'
+import { createRederict } from '@/utils/create-rederict'
+import { modeToken, modeKey, initial, type Mode } from '@/mode'
+import { parseKey } from './utils/parse-key'
 
-const mode = inject<Mode>(modeToken, initial);
+const mode = inject<Mode>(modeToken, initial)
 
 const updateStorage = () => {
-  localStorage.setItem(modeKey, JSON.stringify(mode));
-};
+  localStorage.setItem(modeKey, JSON.stringify(mode))
+}
 
 const setIsOpened = () => {
-  mode.dockClosed = !mode.dockClosed;
+  mode.dockClosed = !mode.dockClosed
 
-  updateStorage();
-};
+  updateStorage()
+}
 
-const setIsMinimal = () => {
-  mode.minimal = !mode.minimal;
+const minimalMode = () => {
+  mode.minimal = !mode.minimal
 
-  updateStorage();
-};
+  updateStorage()
+}
 
 const keys = new Map<string, () => void>([
-  ['d', () => setIsOpened()],
-  ['<C-d>', setIsMinimal],
+  ['d', setIsOpened],
+  ['<C-d>', minimalMode],
   ...links.map((link) => createRederict(link.bind, link.href)),
-]);
+])
 
 const listener = (event: KeyboardEvent) => {
-  event.preventDefault();
+  event.preventDefault()
 
-  const action = keys.get(parseKey(event));
+  const action = keys.get(parseKey(event))
 
   if (!action) {
-    return;
+    return
   }
 
-  action();
-};
+  action()
+}
 
-onMounted(() => window.addEventListener('keydown', listener));
+onMounted(() => window.addEventListener('keydown', listener))
 
-onUnmounted(() => window.removeEventListener('keydown', listener));
+onUnmounted(() => window.removeEventListener('keydown', listener))
 </script>
 
 <template>

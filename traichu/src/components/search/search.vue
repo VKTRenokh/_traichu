@@ -1,12 +1,18 @@
-<script setup lang='ts'>
-import { onMounted, onUnmounted, ref } from "vue"
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const search = ref<HTMLInputElement>()
 
 const handleKeyDown = (event: KeyboardEvent) => {
+  if (event.target instanceof HTMLElement) {
+    return
+  }
+
   if (event.key !== 'i') {
     return
   }
+
+  event.preventDefault()
 
   if (!search.value || document.activeElement === search.value) {
     return
@@ -37,7 +43,14 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
   <section class="search">
     <form action="https://duckduckgo.com/" method="get" class="search-form" autocomplete="off">
       <label for="search-input" class="search-input-label">Search</label>
-      <input ref="search" type="text" id="search-input" name="q" autofocus @keydown="handleInputKeyDown">
+      <input
+        ref="search"
+        type="text"
+        id="search-input"
+        name="q"
+        autofocus
+        @keydown="handleInputKeyDown"
+      />
       <button class="sr-only" tabindex="-1" aria-label="search"></button>
     </form>
   </section>
