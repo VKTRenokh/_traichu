@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Search from '@/components/search/search.vue'
-import { defineAsyncComponent, inject, onMounted, onUnmounted } from 'vue'
+import { inject, onMounted, onUnmounted } from 'vue'
 import Icon from './icon.vue'
 import { parseKey } from './dock/utils/parse-key'
 import { createRederict } from '@/utils/create-rederict'
