@@ -9,6 +9,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
   }
 
   if (!search.value || document.activeElement === search.value) {
+    console.log('!!')
     return
   }
 
@@ -18,10 +19,12 @@ const handleKeyDown = (event: KeyboardEvent) => {
 
 const handleInputKeyDown = (event: KeyboardEvent) => {
   if (event.key !== 'Escape') {
+    console.log('not escape')
     return
   }
 
   if (!(event.target instanceof HTMLInputElement)) {
+    console.log('not input')
     return
   }
 

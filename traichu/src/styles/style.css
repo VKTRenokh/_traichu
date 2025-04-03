@@ -1,5 +1,5 @@
-@import "@/styles/reset.css";
-@import "animations.css";
+@import './reset.css';
+@import 'animations.css';
 
 :root {
   /*
@@ -22,8 +22,12 @@
   --color-white: hsl(var(--color-white-hsl));
 
   /* Font-families */
-  --font-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-  --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-monospace:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono,
+    monospace;
+  --font-sans-serif:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
 
   /* Font-sizing */
   --font-size-body: 1rem;
@@ -121,8 +125,10 @@ body {
   outline: 0.25rem solid transparent;
   padding: var(--spacing-m);
   width: 100%;
-  transition: border-color .5s ease-in-out, background-color .3s cubic-bezier(.94, .05, .33, .69);
-  font-family: "JetBrains Mono";
+  transition:
+    border-color 0.5s ease-in-out,
+    background-color 0.3s cubic-bezier(0.94, 0.05, 0.33, 0.69);
+  font-family: 'JetBrains Mono';
 }
 
 @media (prefers-color-scheme: dark) {

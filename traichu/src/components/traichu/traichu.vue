@@ -23,6 +23,10 @@ const keys = new Map<string, () => void>([
 ])
 
 const listener = (event: KeyboardEvent) => {
+  if (document.activeElement instanceof HTMLInputElement) {
+    return
+  }
+
   event.preventDefault()
 
   const action = keys.get(parseKey(event))
